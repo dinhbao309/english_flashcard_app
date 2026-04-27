@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void goToFlashCard(String topic) {
-        // Intent intent = new Intent(this, FlashCardActivity.class);
-        // intent.putExtra("topic", topic);
-        // startActivity(intent);
+        Intent intent = new Intent(this, FlashCardActivity.class);
+        intent.putExtra("topic", topic);
+        startActivity(intent);
     }
 }

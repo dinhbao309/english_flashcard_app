@@ -45,6 +45,12 @@
         <activity
             android:name=".ResetPasswordActivity"
             android:exported="false" />
+        <activity
+            android:name=".TopicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FlashCardActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
