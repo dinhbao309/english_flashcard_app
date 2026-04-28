@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "324293527701",
+    "project_id": "english-flashcard-app-75671",
+    "storage_bucket": "english-flashcard-app-75671.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:324293527701:android:54172abc8f1a2c4918f39c",
+        "android_client_info": {
+          "package_name": "com.midterm.english_flashcard_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbMjAeviR3xyo1nF8fi2YDuZ_SFypI9Mo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

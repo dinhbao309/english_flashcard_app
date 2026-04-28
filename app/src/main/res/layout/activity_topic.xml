@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF9E6"
+    android:padding="24dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="24dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_media_previous"
+            android:background="@drawable/bg_card_orange"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chọn chủ đề"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FF6B35" />
+
+    </LinearLayout>
+
+    <!-- Grid chủ đề -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="3"
+            android:useDefaultMargins="true">
+
+            <!-- Động vật -->
+            <LinearLayout
+                android:id="@+id/cardAnimals"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_card_green"
+                android:layout_margin="8dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🐶" android:textSize="40sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Động vật" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 từ" android:textSize="12sp" android:textColor="#DDFFFFFF" />
+            </LinearLayout>
+
+            <!-- Màu sắc -->
+            <LinearLayout
+                android:id="@+id/cardColors"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_card_purple"
+                android:layout_margin="8dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎨" android:textSize="40sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Màu sắc" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 từ" android:textSize="12sp" android:textColor="#DDFFFFFF" />
+            </LinearLayout>
+
+            <!-- Số đếm -->
+            <LinearLayout
+                android:id="@+id/cardNumbers"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_card_blue"
+                android:layout_margin="8dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔢" android:textSize="40sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Số đếm" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 từ" android:textSize="12sp" android:textColor="#DDFFFFFF" />
+            </LinearLayout>
+
+            <!-- Đồ vật -->
+            <LinearLayout
+                android:id="@+id/cardObjects"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_card_pink"
+                android:layout_margin="8dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏠" android:textSize="40sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Đồ vật" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 từ" android:textSize="12sp" android:textColor="#DDFFFFFF" />
+            </LinearLayout>
+
+            <!-- Trái cây -->
+            <LinearLayout
+                android:id="@+id/cardFruits"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_card_orange"
+                android:layout_margin="8dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍎" android:textSize="40sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Trái cây" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 từ" android:textSize="12sp" android:textColor="#DDFFFFFF" />
+            </LinearLayout>
+
+            <!-- Gia đình -->
+            <LinearLayout
+                android:id="@+id/cardFamily"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_card_green"
+                android:layout_margin="8dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👨‍👩‍👧" android:textSize="40sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gia đình" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 từ" android:textSize="12sp" android:textColor="#DDFFFFFF" />
+            </LinearLayout>
+
+        </GridLayout>
+    </ScrollView>
+
+</LinearLayout>
