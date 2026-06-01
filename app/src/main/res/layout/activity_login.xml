@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF9E6">
+    android:background="#FFF9E6"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,16 +34,32 @@
             android:layout_marginBottom="16dp" />
 
         <!-- Mật khẩu -->
-        <EditText
-            android:id="@+id/etPassword"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:hint="Mật khẩu"
-            android:inputType="textPassword"
-            android:background="@drawable/bg_input"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Mật khẩu"
+                android:inputType="textPassword"
+                android:background="@drawable/bg_input"
+                android:paddingStart="16dp"
+                android:paddingEnd="48dp" />
+
+            <ImageButton
+                android:id="@+id/btnTogglePassword"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_view"
+                android:contentDescription="Show/Hide Password" />
+        </RelativeLayout>
 
         <!-- Quên mật khẩu -->
         <TextView

@@ -1,131 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:background="#FFF9E6"
-    android:padding="32dp">
+    android:fitsSystemWindows="true">
 
-    <!-- Animation Lottie -->
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieResult"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:lottie_rawRes="@raw/logosplash"
-        app:lottie_loop="false"
-        app:lottie_autoPlay="true"
-        android:layout_marginBottom="16dp" />
-
-    <!-- Tiêu đề -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tuyệt vời! 🎉"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="#FF6B35"
-        android:layout_marginBottom="8dp" />
-
-    <!-- Chủ đề vừa học -->
-    <TextView
-        android:id="@+id/tvTopicDone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bạn đã học xong chủ đề"
-        android:textSize="16sp"
-        android:textColor="#888888"
-        android:layout_marginBottom="4dp" />
-
-    <TextView
-        android:id="@+id/tvTopicName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Động vật"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#FF6B35"
-        android:layout_marginBottom="32dp" />
-
-    <!-- Card thống kê -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/bg_flashcard_front"
-        android:padding="24dp"
         android:gravity="center"
-        android:layout_marginBottom="32dp">
+        android:paddingTop="48dp"
+        android:paddingBottom="32dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
+
+        <!-- Giữ nguyên toàn bộ nội dung bên trong, chỉ thay thẻ ngoài -->
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieResult"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:lottie_rawRes="@raw/logosplash"
+            app:lottie_loop="false"
+            app:lottie_autoPlay="true"
+            android:layout_marginBottom="16dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Số thẻ đã học"
-            android:textSize="14sp"
-            android:textColor="#888888"
+            android:text="Tuyệt vời! 🎉"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#FF6B35"
             android:layout_marginBottom="8dp" />
 
         <TextView
-            android:id="@+id/tvTotalCards"
+            android:id="@+id/tvTopicDone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10"
-            android:textSize="56sp"
-            android:textStyle="bold"
-            android:textColor="#FF6B35"
+            android:text="Bạn đã học xong chủ đề"
+            android:textSize="16sp"
+            android:textColor="#888888"
             android:layout_marginBottom="4dp" />
 
         <TextView
+            android:id="@+id/tvTopicName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="thẻ"
+            android:text="Động vật"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#FF6B35"
+            android:layout_marginBottom="32dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_flashcard_front"
+            android:padding="24dp"
+            android:gravity="center"
+            android:layout_marginBottom="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số thẻ đã học"
+                android:textSize="14sp"
+                android:textColor="#888888"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvTotalCards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textSize="56sp"
+                android:textStyle="bold"
+                android:textColor="#FF6B35"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="thẻ"
+                android:textSize="16sp"
+                android:textColor="#888888" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="32dp">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⭐" android:textSize="36sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⭐" android:textSize="36sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⭐" android:textSize="36sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnRelearn"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Học lại 🔄"
             android:textSize="16sp"
-            android:textColor="#888888" />
+            android:backgroundTint="#EEEEEE"
+            android:textColor="#333333"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnOtherTopic"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Chủ đề khác 📚"
+            android:textSize="16sp"
+            android:backgroundTint="#FF6B35"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Về trang chủ 🏠"
+            android:textSize="16sp"
+            android:backgroundTint="#4CAF50" />
 
     </LinearLayout>
-
-    <!-- Sao thưởng -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="32dp">
-
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⭐" android:textSize="36sp" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⭐" android:textSize="36sp" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⭐" android:textSize="36sp" />
-
-    </LinearLayout>
-
-    <!-- Nút học lại -->
-    <Button
-        android:id="@+id/btnRelearn"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:text="Học lại 🔄"
-        android:textSize="16sp"
-        android:backgroundTint="#EEEEEE"
-        android:textColor="#333333"
-        android:layout_marginBottom="12dp" />
-
-    <!-- Nút chọn chủ đề khác -->
-    <Button
-        android:id="@+id/btnOtherTopic"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:text="Chủ đề khác 📚"
-        android:textSize="16sp"
-        android:backgroundTint="#FF6B35"
-        android:layout_marginBottom="12dp" />
-
-    <!-- Nút về Home -->
-    <Button
-        android:id="@+id/btnHome"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:text="Về trang chủ 🏠"
-        android:textSize="16sp"
-        android:backgroundTint="#4CAF50" />
-
-</LinearLayout>
+</ScrollView>

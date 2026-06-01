@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF9E6">
+    android:background="#FFF9E6"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,13 +21,23 @@
             android:textColor="#FF6B35"
             android:layout_marginBottom="32dp" />
 
+        <!-- Họ và tên -->
+        <EditText
+            android:id="@+id/etFullName"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:hint="Họ và tên"
+            android:background="@drawable/bg_input"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="16dp" />
+
         <!-- Tên đăng nhập -->
         <EditText
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:hint="Tên đăng nhập"
-            android:inputType="text"
             android:background="@drawable/bg_input"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
@@ -37,7 +48,7 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:hint="Email (không bắt buộc)"
+            android:hint="Email"
             android:inputType="textEmailAddress"
             android:background="@drawable/bg_input"
             android:paddingStart="16dp"
@@ -57,28 +68,60 @@
             android:layout_marginBottom="16dp" />
 
         <!-- Mật khẩu -->
-        <EditText
-            android:id="@+id/etPassword"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:hint="Mật khẩu"
-            android:inputType="textPassword"
-            android:background="@drawable/bg_input"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp">
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Mật khẩu"
+                android:inputType="textPassword"
+                android:background="@drawable/bg_input"
+                android:paddingStart="16dp"
+                android:paddingEnd="48dp" />
+
+            <ImageButton
+                android:id="@+id/btnTogglePassword"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_view"
+                android:contentDescription="Show/Hide Password" />
+        </RelativeLayout>
 
         <!-- Nhập lại mật khẩu -->
-        <EditText
-            android:id="@+id/etConfirmPassword"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:hint="Nhập lại mật khẩu"
-            android:inputType="textPassword"
-            android:background="@drawable/bg_input"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="24dp">
+
+            <EditText
+                android:id="@+id/etConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Nhập lại mật khẩu"
+                android:inputType="textPassword"
+                android:background="@drawable/bg_input"
+                android:paddingStart="16dp"
+                android:paddingEnd="48dp" />
+
+            <ImageButton
+                android:id="@+id/btnToggleConfirmPassword"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_view"
+                android:contentDescription="Show/Hide Password" />
+        </RelativeLayout>
 
         <!-- Nút đăng ký -->
         <Button

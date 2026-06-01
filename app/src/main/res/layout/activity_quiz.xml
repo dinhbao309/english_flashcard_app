@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF9E6"
+    android:padding="24dp"
+    android:fitsSystemWindows="true">
+
+    <!-- Header với nút Back -->
+    <LinearLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_media_previous"
+            android:background="@drawable/bg_card_orange"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Quiz Game"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FF6B35" />
+
+        <TextView
+            android:id="@+id/tvScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score: 0 / 0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FF6B35" />
+    </LinearLayout>
+
+    <!-- ScrollView cho các câu hỏi cũ (background) -->
+    <ScrollView
+        android:id="@+id/scrollPrevious"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layoutHeader"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:id="@+id/layoutPreviousQuestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <!-- Câu hỏi hiện tại (overlay) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layoutHeader"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:background="#FFF9E6"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Spacer trên -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Hình ảnh câu hỏi ở giữa -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="340dp"
+            android:layout_height="340dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
+
+            <ImageView
+                android:id="@+id/imgQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Tên tiếng Anh của ảnh -->
+        <TextView
+            android:id="@+id/tvAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FF6B35"
+            android:padding="12dp"
+            android:background="@drawable/bg_quiz_option"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Spacer dưới -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Các nút đáp án ở dưới (2x2 grid) -->
+        <LinearLayout
+            android:id="@+id/layoutOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <!-- Row 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnOption1"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:text="Option 1"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:background="@drawable/bg_button_white_rounded"
+                    android:layout_marginEnd="12dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnOption2"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:text="Option 2"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:background="@drawable/bg_button_white_rounded"
+                    android:layout_marginStart="12dp" />
+            </LinearLayout>
+
+            <!-- Row 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnOption3"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:text="Option 3"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:background="@drawable/bg_button_white_rounded"
+                    android:layout_marginEnd="12dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnOption4"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:text="Option 4"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:background="@drawable/bg_button_white_rounded"
+                    android:layout_marginStart="12dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Nút tiếp tục/kết thúc (ẩn mặc định) -->
+        <LinearLayout
+            android:id="@+id/layoutResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnContinue"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:text="Tiếp tục ▶"
+                android:textSize="16sp"
+                android:backgroundTint="#4CAF50"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnFinish"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:text="Kết thúc"
+                android:textSize="16sp"
+                android:backgroundTint="#F44336"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Feedback image (CORRECT/INCORRECT) ở giữa màn hình -->
+    <ImageView
+        android:id="@+id/imgFeedback"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:elevation="10dp"
+        android:scaleType="fitCenter" />
+
+</RelativeLayout>

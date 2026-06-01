@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF9E6">
+    android:background="#FFF9E6"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,48 +12,80 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <!-- Header: lời chào -->
-        <LinearLayout
+        <!-- Header: lời chào với FrameLayout để overlay -->
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
             android:layout_marginBottom="24dp">
 
+            <!-- Phần header chính -->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/tvGreeting"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Xin chào!"
-                    android:textSize="16sp"
-                    android:textColor="#888888" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvUsername"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bạn nhỏ"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:textColor="#FF6B35" />
+                    <TextView
+                        android:id="@+id/tvGreeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Xin chào!"
+                        android:textSize="16sp"
+                        android:textColor="#888888" />
+
+                    <TextView
+                        android:id="@+id/tvUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bạn nhỏ"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="#FF6B35" />
+                </LinearLayout>
+
+                <!-- Avatar với Lottie Animation -->
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottieAvatar"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:lottie_rawRes="@raw/logosplash"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true" />
+
             </LinearLayout>
 
-            <!-- Avatar -->
-            <ImageView
-                android:id="@+id/imgAvatar"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
-                android:src="@mipmap/ic_launcher_round"
-                android:background="@drawable/bg_avatar"
-                android:padding="2dp" />
+            <!-- Nút đăng xuất overlay (absolute position) -->
+            <LinearLayout
+                android:id="@+id/tvLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:background="@drawable/bg_input"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:elevation="4dp">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🚪 Đăng xuất"
+                    android:textSize="14sp"
+                    android:textColor="#FF6B35"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </FrameLayout>
 
         <!-- Tiến độ học -->
         <LinearLayout
@@ -247,7 +281,27 @@
             android:layout_height="56dp"
             android:text="Xem tất cả chủ đề"
             android:textSize="16sp"
-            android:backgroundTint="#FF6B35" />
+            android:backgroundTint="#FF6B35"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Nút Mini Game -->
+        <Button
+            android:id="@+id/btnMiniGame"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="🎮 Quiz Game - Trắc nghiệm"
+            android:textSize="16sp"
+            android:backgroundTint="#9C27B0"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Nút Matching Game -->
+        <Button
+            android:id="@+id/btnMatchingGame"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="🃏 Matching Game - Ghép cặp"
+            android:textSize="16sp"
+            android:backgroundTint="#E91E63" />
 
     </LinearLayout>
 </ScrollView>

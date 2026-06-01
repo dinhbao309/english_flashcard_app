@@ -2,9 +2,11 @@ package com.midterm.english_flashcard_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText etUsername, etPassword;
     Button btnLogin;
     TextView tvForgotPassword, tvGoToRegister;
+    ImageButton btnTogglePassword;
+    boolean isPasswordVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,19 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin         = findViewById(R.id.btnLogin);
         tvForgotPassword = findViewById(R.id.tvForgotPassword);
         tvGoToRegister   = findViewById(R.id.tvGoToRegister);
+        btnTogglePassword = findViewById(R.id.btnTogglePassword);
+
+        // Toggle hiển thị mật khẩu
+        btnTogglePassword.setOnClickListener(v -> {
+            if (isPasswordVisible) {
+                etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                isPasswordVisible = false;
+            } else {
+                etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                isPasswordVisible = true;
+            }
+            etPassword.setSelection(etPassword.getText().length());
+        });
 
         // Đăng nhập
         btnLogin.setOnClickListener(v -> {
@@ -40,10 +57,33 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // TODO: kiểm tra tài khoản ở đây
-            Toast.makeText(this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+            // Kiểm tra tài khoản từ Firebase Firestore
+            FirebaseHelper firebaseHelper = new FirebaseHelper();
+            firebaseHelper.loginUser(username, password, new FirebaseHelper.OnLoginListener() {
+                @Override
+                public void onSuccess(String username, String fullName) {
+                    // Lưu thông tin đăng nhập vào SharedPreferences
+                    getSharedPreferences("LoginPrefs", MODE_PRIVATE)
+                            .edit()
+                            .putString("username", username)
+                            .putString("fullName", fullName)
+                            .putBoolean("isLoggedIn", true)
+                            .putLong("lastActivity", System.currentTimeMillis())
+                            .apply();
+
+                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("username", username);
+                    intent.putExtra("fullName", fullName);
+                    startActivity(intent);
+                    finish();
+                }
+
+                @Override
+                public void onError(String error) {
+                    Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
+                }
+            });
         });
 
         // Quên mật khẩu

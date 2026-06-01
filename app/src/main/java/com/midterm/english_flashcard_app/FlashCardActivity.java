@@ -6,19 +6,22 @@ import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class FlashCardActivity extends AppCompatActivity {
 
-    TextView tvTopicName, tvCardCount, tvEmoji, tvEnglish;
-    TextView tvEmojiBack, tvVietnamese, tvEnglishSmall;
+    TextView tvTopicName, tvCardCount, tvEnglish;
+    TextView tvVietnamese, tvEnglishSmall;
+    ImageView imgCardFront, imgCardBack;
     LinearLayout cardFront, cardBack;
     ProgressBar progressBar;
     Button btnPrev, btnNext, btnSpeak;
@@ -35,14 +38,13 @@ public class FlashCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flashcard);
 
-        // Ánh xạ view
         tvTopicName    = findViewById(R.id.tvTopicName);
         tvCardCount    = findViewById(R.id.tvCardCount);
-        tvEmoji        = findViewById(R.id.tvEmoji);
         tvEnglish      = findViewById(R.id.tvEnglish);
-        tvEmojiBack    = findViewById(R.id.tvEmojiBack);
         tvVietnamese   = findViewById(R.id.tvVietnamese);
         tvEnglishSmall = findViewById(R.id.tvEnglishSmall);
+        imgCardFront   = findViewById(R.id.imgCardFront);
+        imgCardBack    = findViewById(R.id.imgCardBack);
         cardFront      = findViewById(R.id.cardFront);
         cardBack       = findViewById(R.id.cardBack);
         progressBar    = findViewById(R.id.progressBar);
@@ -51,12 +53,11 @@ public class FlashCardActivity extends AppCompatActivity {
         btnSpeak       = findViewById(R.id.btnSpeak);
         btnBack        = findViewById(R.id.btnBack);
 
-        // Nhận tên chủ đề từ Intent
         topic = getIntent().getStringExtra("topic");
         tvTopicName.setText(topic);
         tvCardCount.setText("Đang tải...");
 
-        // Khởi tạo Text-to-Speech
+        // Khởi tạo TTS
         tts = new TextToSpeech(this, status -> {
             if (status == TextToSpeech.SUCCESS)
                 tts.setLanguage(Locale.ENGLISH);
@@ -84,14 +85,14 @@ public class FlashCardActivity extends AppCompatActivity {
             }
         });
 
-        // Lật thẻ khi nhấn vào
+        // Lật thẻ
         cardFront.setOnClickListener(v -> flipCard());
         cardBack.setOnClickListener(v -> flipCard());
 
-        // Nút phát âm
+        // Phát âm
         btnSpeak.setOnClickListener(v -> {
             if (!wordList.isEmpty()) {
-                String word = wordList.get(currentIndex)[1];
+                String word = wordList.get(currentIndex)[0];
                 tts.speak(word, TextToSpeech.QUEUE_FLUSH, null, null);
             }
         });
@@ -100,7 +101,6 @@ public class FlashCardActivity extends AppCompatActivity {
         btnPrev.setOnClickListener(v -> {
             if (currentIndex > 0) {
                 currentIndex--;
-                isFlipped = false;
                 showCard(currentIndex);
             } else {
                 Toast.makeText(this, "Đây là thẻ đầu tiên!", Toast.LENGTH_SHORT).show();
@@ -111,10 +111,8 @@ public class FlashCardActivity extends AppCompatActivity {
         btnNext.setOnClickListener(v -> {
             if (currentIndex < wordList.size() - 1) {
                 currentIndex++;
-                isFlipped = false;
                 showCard(currentIndex);
             } else {
-                // Học xong → chuyển sang màn hình kết quả
                 Intent intent = new Intent(FlashCardActivity.this, ResultActivity.class);
                 intent.putExtra("topic", topic);
                 intent.putExtra("total", wordList.size());
@@ -123,36 +121,59 @@ public class FlashCardActivity extends AppCompatActivity {
             }
         });
 
-        // Nút Back
         btnBack.setOnClickListener(v -> finish());
     }
 
     private void showCard(int index) {
         String[] word = wordList.get(index);
+        // word[0] = tiếng Anh, word[1] = tiếng Việt, word[2] = image
 
         // Mặt trước
-        tvEmoji.setText(word[0]);
-        tvEnglish.setText(word[1]);
+        tvEnglish.setText(word[0]);
 
         // Mặt sau
-        tvEmojiBack.setText(word[0]);
-        tvVietnamese.setText(word[2]);
-        tvEnglishSmall.setText(word[1]);
+        tvVietnamese.setText(word[1]);
+        tvEnglishSmall.setText(word[0]);
+
+        // Load hình ảnh từ assets
+        if (word.length > 2 && word[2] != null && !word[2].isEmpty()) {
+            loadImageFromAssets(word[2], imgCardFront);
+            loadImageFromAssets(word[2], imgCardBack);
+        }
 
         // Reset về mặt trước
         cardFront.setVisibility(View.VISIBLE);
         cardBack.setVisibility(View.GONE);
         isFlipped = false;
 
-        // Cập nhật số thẻ và thanh tiến độ
+        // Cập nhật đếm và tiến độ
         tvCardCount.setText((index + 1) + " / " + wordList.size());
         progressBar.setProgress((index + 1) * 100 / wordList.size());
 
-        // Đổi text nút Next ở thẻ cuối
         if (index == wordList.size() - 1) {
             btnNext.setText("Hoàn thành ✓");
         } else {
             btnNext.setText("Tiếp ▶");
+        }
+    }
+
+    private void loadImageFromAssets(String imageName, ImageView imageView) {
+        try {
+            // Xử lý tên file: nếu có .png thì đổi thành .jpg
+            if (imageName.endsWith(".png")) {
+                imageName = imageName.replace(".png", ".jpg");
+            }
+            
+            // Load ảnh từ assets/images/
+            String path = "file:///android_asset/images/" + imageName;
+            Glide.with(this)
+                    .load(path)
+                    .placeholder(R.drawable.bg_input)
+                    .error(R.drawable.bg_input)
+                    .into(imageView);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Lỗi load ảnh: " + imageName, Toast.LENGTH_SHORT).show();
         }
     }
 

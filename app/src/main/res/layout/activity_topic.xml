@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#FFF9E6"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:fitsSystemWindows="true">
 
     <!-- Header -->
     <LinearLayout
@@ -56,7 +57,6 @@
                 android:layout_margin="8dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🐶" android:textSize="40sp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Động vật" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 từ" android:textSize="12sp" android:textColor="#DDFFFFFF" />
             </LinearLayout>
 
             <!-- Màu sắc -->
@@ -71,7 +71,6 @@
                 android:layout_margin="8dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎨" android:textSize="40sp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Màu sắc" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 từ" android:textSize="12sp" android:textColor="#DDFFFFFF" />
             </LinearLayout>
 
             <!-- Số đếm -->
@@ -86,7 +85,6 @@
                 android:layout_margin="8dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔢" android:textSize="40sp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Số đếm" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 từ" android:textSize="12sp" android:textColor="#DDFFFFFF" />
             </LinearLayout>
 
             <!-- Đồ vật -->
@@ -101,7 +99,6 @@
                 android:layout_margin="8dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏠" android:textSize="40sp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Đồ vật" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 từ" android:textSize="12sp" android:textColor="#DDFFFFFF" />
             </LinearLayout>
 
             <!-- Trái cây -->
@@ -116,7 +113,6 @@
                 android:layout_margin="8dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍎" android:textSize="40sp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Trái cây" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 từ" android:textSize="12sp" android:textColor="#DDFFFFFF" />
             </LinearLayout>
 
             <!-- Gia đình -->
@@ -131,7 +127,6 @@
                 android:layout_margin="8dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👨‍👩‍👧" android:textSize="40sp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gia đình" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 từ" android:textSize="12sp" android:textColor="#DDFFFFFF" />
             </LinearLayout>
 
         </GridLayout>

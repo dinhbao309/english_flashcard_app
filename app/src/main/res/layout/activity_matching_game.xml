@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF9E6"
+    android:fitsSystemWindows="true">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_media_previous"
+            android:background="@drawable/bg_card_orange"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🎮 Matching Game"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FF6B35" />
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⏱ 60s"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <!-- Score -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/tvScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score: 0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#4CAF50"
+            android:layout_marginEnd="24dp" />
+
+        <TextView
+            android:id="@+id/tvMatched"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Matched: 0/5"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#2196F3" />
+    </LinearLayout>
+
+    <!-- Game Area -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Hình ảnh ở trên (2 hàng x 2 cột) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📷 Hình ảnh"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FF6B35"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutImages"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="8dp">
+            
+            <!-- Row 1 -->
+            <LinearLayout
+                android:id="@+id/layoutImagesRow1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" />
+            
+            <!-- Row 2 -->
+            <LinearLayout
+                android:id="@+id/layoutImagesRow2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" />
+        </LinearLayout>
+
+        <!-- Đường kẻ ngang -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#CCCCCC"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Từ vựng ở dưới (2 hàng x 2 cột) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📝 Từ vựng"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#2196F3"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutWords"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="8dp">
+            
+            <!-- Row 1 -->
+            <LinearLayout
+                android:id="@+id/layoutWordsRow1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" />
+            
+            <!-- Row 2 -->
+            <LinearLayout
+                android:id="@+id/layoutWordsRow2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
+
+<!-- Feedback image (CORRECT/INCORRECT) ở giữa màn hình -->
+<ImageView
+    android:id="@+id/imgFeedback"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:layout_gravity="center"
+    android:visibility="gone"
+    android:elevation="10dp"
+    android:scaleType="fitCenter" />
+
+</FrameLayout>

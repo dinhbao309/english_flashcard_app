@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF9E6"
+    android:padding="24dp"
+    android:gravity="center"
+    android:fitsSystemWindows="true">
+
+    <!-- Icon và Title -->
+    <TextView
+        android:id="@+id/tvResultTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🎉 Hoàn thành!"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="#FF6B35"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Card kết quả -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_card_orange"
+        android:padding="24dp"
+        android:layout_marginBottom="32dp">
+
+        <!-- Tổng điểm -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="💰 Tổng điểm:"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tvTotalScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="36"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Tổng từ matched -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="✅ Tổng từ ghép đúng:"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tvTotalMatched"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Tổng thời gian -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="⏱ Tổng thời gian:"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tvTotalTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18s"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Chi tiết vòng này -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vòng này:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#888888"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvRoundDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4 từ • 18 giây • +36 điểm"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Nút hành động -->
+    <Button
+        android:id="@+id/btnContinue"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="▶ Chơi tiếp"
+        android:textSize="18sp"
+        android:backgroundTint="#4CAF50"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnFinish"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="🏁 Kết thúc"
+        android:textSize="18sp"
+        android:backgroundTint="#F44336" />
+
+</LinearLayout>

@@ -26,12 +26,12 @@ public class TopicActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
 
-        cardAnimals.setOnClickListener(v -> goToFlashCard("Động vật"));
-        cardColors.setOnClickListener(v -> goToFlashCard("Màu sắc"));
-        cardNumbers.setOnClickListener(v -> goToFlashCard("Số đếm"));
-        cardObjects.setOnClickListener(v -> goToFlashCard("Đồ vật"));
-        cardFruits.setOnClickListener(v -> goToFlashCard("Trái cây"));
-        cardFamily.setOnClickListener(v -> goToFlashCard("Gia đình"));
+        cardAnimals.setOnClickListener(v -> goToFlashCard("Animals"));
+        cardColors.setOnClickListener(v -> goToFlashCard("Colors"));
+        cardNumbers.setOnClickListener(v -> goToFlashCard("Numbers"));
+        cardObjects.setOnClickListener(v -> goToFlashCard("Objects"));
+        cardFruits.setOnClickListener(v -> goToFlashCard("Fruits"));
+        cardFamily.setOnClickListener(v -> goToFlashCard("Family"));
     }
 
     private void goToFlashCard(String topic) {

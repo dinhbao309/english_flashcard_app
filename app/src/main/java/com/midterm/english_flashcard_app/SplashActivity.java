@@ -1,6 +1,8 @@
 package com.midterm.english_flashcard_app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
@@ -12,6 +14,8 @@ import com.airbnb.lottie.LottieAnimationView;
 public class SplashActivity extends AppCompatActivity {
 
     private static final int SPLASH_DELAY = 3000;
+    private static final String PREFS_NAME = "LoginPrefs";
+    private static final long SESSION_TIMEOUT = 10 * 60 * 1000; // 10 phút
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +34,36 @@ public class SplashActivity extends AppCompatActivity {
         tvAppName.startAnimation(fadeIn);
         tvSlogan.startAnimation(fadeIn);
 
-        // Sau 3 giây chuyển sang MainActivity
+        // Sau 3 giây kiểm tra đăng nhập
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-            finish();
+            checkLoginStatus();
         }, SPLASH_DELAY);
+    }
+
+    private void checkLoginStatus() {
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        boolean isLoggedIn = prefs.getBoolean("isLoggedIn", false);
+        long lastActivity = prefs.getLong("lastActivity", 0);
+        long currentTime = System.currentTimeMillis();
+
+        // Kiểm tra session timeout
+        if (isLoggedIn && (currentTime - lastActivity) < SESSION_TIMEOUT) {
+            // Còn session, chuyển thẳng vào MainActivity
+            String username = prefs.getString("username", "");
+            String fullName = prefs.getString("fullName", "");
+            
+            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            intent.putExtra("username", username);
+            intent.putExtra("fullName", fullName);
+            startActivity(intent);
+        } else {
+            // Hết session hoặc chưa đăng nhập, chuyển sang LoginActivity
+            if (isLoggedIn) {
+                // Xóa session cũ
+                prefs.edit().clear().apply();
+            }
+            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+        }
+        finish();
     }
 }
