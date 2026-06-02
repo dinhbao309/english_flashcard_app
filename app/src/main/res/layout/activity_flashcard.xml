@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF9E6"
+    android:padding="24dp"
+    android:fitsSystemWindows="true">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_media_previous"
+            android:background="@drawable/bg_card_orange"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:id="@+id/tvTopicName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Động vật"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#FF6B35" />
+
+        <TextView
+            android:id="@+id/tvCardCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 / 10"
+            android:textSize="14sp"
+            android:textColor="#888888" />
+
+    </LinearLayout>
+
+    <!-- Thanh tiến độ -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:max="100"
+        android:progress="10"
+        android:progressTint="#FF6B35"
+        android:progressBackgroundTint="#FFDDCC"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Thẻ FlashCard -->
+    <FrameLayout
+        android:id="@+id/flashCardContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="32dp">
+
+        <!-- Mặt trước: tiếng Anh -->
+        <LinearLayout
+            android:id="@+id/cardFront"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_flashcard_front"
+            android:padding="24dp">
+
+            <ImageView
+                android:id="@+id/imgCardFront"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="24dp" />
+
+            <TextView
+                android:id="@+id/tvEnglish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DOG"
+                android:textSize="42sp"
+                android:textStyle="bold"
+                android:textColor="#FF6B35"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhấn để xem nghĩa"
+                android:textSize="14sp"
+                android:textColor="#AAAAAA" />
+
+        </LinearLayout>
+
+        <!-- Mặt sau: tiếng Việt -->
+        <LinearLayout
+            android:id="@+id/cardBack"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_flashcard_back"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/imgCardBack"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="24dp" />
+
+            <TextView
+                android:id="@+id/tvVietnamese"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Con chó"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvEnglishSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DOG"
+                android:textSize="20sp"
+                android:textColor="#FFDDD0" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <!-- Nút điều hướng -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <!-- Nút Previous -->
+        <Button
+            android:id="@+id/btnPrev"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="◀ Trước"
+            android:textSize="15sp"
+            android:backgroundTint="#EEEEEE"
+            android:textColor="#333333"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Nút phát âm -->
+        <Button
+            android:id="@+id/btnSpeak"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:text="🔊"
+            android:textSize="20sp"
+            android:backgroundTint="#FF6B35"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Nút Next -->
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="Tiếp ▶"
+            android:textSize="15sp"
+            android:backgroundTint="#FF6B35" />
+
+    </LinearLayout>
+
+</LinearLayout>

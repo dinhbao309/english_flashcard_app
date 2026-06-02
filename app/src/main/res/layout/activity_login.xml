@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF9E6"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng nhập"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#FF6B35"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Tên đăng nhập -->
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:hint="Tên đăng nhập"
+            android:inputType="text"
+            android:background="@drawable/bg_input"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Mật khẩu -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Mật khẩu"
+                android:inputType="textPassword"
+                android:background="@drawable/bg_input"
+                android:paddingStart="16dp"
+                android:paddingEnd="48dp" />
+
+            <ImageButton
+                android:id="@+id/btnTogglePassword"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_view"
+                android:contentDescription="Show/Hide Password" />
+        </RelativeLayout>
+
+        <!-- Quên mật khẩu -->
+        <TextView
+            android:id="@+id/tvForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quên mật khẩu?"
+            android:textColor="#FF6B35"
+            android:layout_gravity="end"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Nút đăng nhập -->
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Đăng nhập"
+            android:textSize="16sp"
+            android:backgroundTint="#FF6B35"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Chuyển sang đăng ký -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chưa có tài khoản? "
+                android:textColor="#888888" />
+
+            <TextView
+                android:id="@+id/tvGoToRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đăng ký ngay"
+                android:textColor="#FF6B35"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
