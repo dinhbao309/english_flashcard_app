@@ -62,7 +62,7 @@ public class FlashCardActivity extends AppCompatActivity {
                 tts.setLanguage(Locale.ENGLISH);
         });
 
-        // Load dữ liệu từ Firebase
+        // Load dữ liệu từ Firebase console
         FirebaseHelper firebaseHelper = new FirebaseHelper();
         firebaseHelper.getWordsByTopic(topic, new FirebaseHelper.OnWordsLoadedListener() {
             @Override
