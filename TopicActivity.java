@@ -6,6 +6,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 public class TopicActivity extends AppCompatActivity {
 
     ImageButton btnBack;
@@ -34,6 +35,7 @@ public class TopicActivity extends AppCompatActivity {
         cardFamily.setOnClickListener(v -> goToFlashCard("Gia đình"));
     }
 
+    
     private void goToFlashCard(String topic) {
         Intent intent = new Intent(this, FlashCardActivity.class);
         intent.putExtra("topic", topic);
