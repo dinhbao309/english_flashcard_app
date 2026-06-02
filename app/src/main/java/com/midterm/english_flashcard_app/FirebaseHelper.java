@@ -92,7 +92,7 @@ public class FirebaseHelper {
                                 user.put("password", password);
                                 user.put("createdAt", System.currentTimeMillis());
                                 user.put("learnedCards", 0);
-                                user.put("totalCards", 20);
+                                user.put("totalCards", 50);
 
                                 db.collection("taikhoan")
                                         .add(user)
@@ -135,7 +135,7 @@ public class FirebaseHelper {
                         Long totalCards = querySnapshot.getDocuments().get(0).getLong("totalCards");
                         
                         int learned = (learnedCards != null) ? learnedCards.intValue() : 0;
-                        int total = (totalCards != null) ? totalCards.intValue() : 20;
+                        int total = (totalCards != null) ? totalCards.intValue() : 50;
                         
                         listener.onLoaded(learned, total);
                     } else {

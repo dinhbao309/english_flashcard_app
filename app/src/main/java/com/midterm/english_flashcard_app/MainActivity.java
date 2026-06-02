@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     boolean isLogoutVisible = false;
 
     // Dữ liệu giả lập tiến độ
-    int totalCards = 20;
+    int totalCards = 50;
     int learnedCards = 0;
 
     // Session management
@@ -124,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         String username = prefs.getString(KEY_USERNAME, "");
         
+        // Kiểm tra và reset tiến độ nếu qua ngày mới
+        checkAndResetDailyProgress();
+        
         if (username.isEmpty()) {
             updateProgress();
             return;
@@ -145,6 +148,81 @@ public class MainActivity extends AppCompatActivity {
                 updateProgress();
             }
         });
+    }
+
+    private void checkAndResetDailyProgress() {
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        String username = prefs.getString(KEY_USERNAME, "");
+        
+        if (username.isEmpty()) {
+            return;
+        }
+        
+        // Kiểm tra và update totalCards lên 50 nếu đang là 20
+        FirebaseHelper firebaseHelper = new FirebaseHelper();
+        firebaseHelper.getUserProgress(username, new FirebaseHelper.OnProgressLoadedListener() {
+            @Override
+            public void onLoaded(int learned, int total) {
+                // Nếu totalCards vẫn là 20, update lên 50
+                if (total == 20) {
+                    updateTotalCardsToFifty(username);
+                }
+            }
+
+            @Override
+            public void onError(String error) {
+                // Ignore error
+            }
+        });
+        
+        // Lấy ngày lưu trữ cuối cùng
+        String lastDate = prefs.getString("lastProgressDate_" + username, "");
+        
+        // Lấy ngày hôm nay (format: yyyy-MM-dd)
+        String today = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
+                .format(new java.util.Date());
+        
+        // Nếu khác ngày, reset tiến độ về 0
+        if (!today.equals(lastDate)) {
+            // Reset tiến độ trong Firebase
+            firebaseHelper.updateUserProgress(username, 0, new FirebaseHelper.OnUpdateProgressListener() {
+                @Override
+                public void onSuccess() {
+                    // Lưu ngày mới
+                    prefs.edit().putString("lastProgressDate_" + username, today).apply();
+                    learnedCards = 0;
+                    updateProgress();
+                }
+
+                @Override
+                public void onError(String error) {
+                    // Nếu lỗi, vẫn lưu ngày mới và reset local
+                    prefs.edit().putString("lastProgressDate_" + username, today).apply();
+                    learnedCards = 0;
+                    updateProgress();
+                }
+            });
+        }
+    }
+
+    private void updateTotalCardsToFifty(String username) {
+        // Update totalCards lên 50 trong Firebase
+        com.google.firebase.firestore.FirebaseFirestore db = com.google.firebase.firestore.FirebaseFirestore.getInstance();
+        db.collection("taikhoan")
+                .whereEqualTo("username", username)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    if (!querySnapshot.isEmpty()) {
+                        String docId = querySnapshot.getDocuments().get(0).getId();
+                        db.collection("taikhoan")
+                                .document(docId)
+                                .update("totalCards", 50)
+                                .addOnSuccessListener(aVoid -> {
+                                    totalCards = 50;
+                                    updateProgress();
+                                });
+                    }
+                });
     }
 
     private void toggleLogoutButton() {

@@ -35,6 +35,7 @@ public class MatchingGameActivity extends AppCompatActivity {
     FirebaseHelper firebaseHelper;
     List<String[]> allWords = new ArrayList<>();
     List<String[]> gameWords = new ArrayList<>();
+    List<String> usedWords = new ArrayList<>(); // Danh sách từ đã dùng
     
     MediaPlayer correctSound, incorrectSound;
     TextToSpeech tts;
@@ -150,12 +151,29 @@ public class MatchingGameActivity extends AppCompatActivity {
             return;
         }
         
-        // Random chọn từ
-        List<String[]> tempList = new ArrayList<>(allWords);
-        Collections.shuffle(tempList);
+        // Lọc ra các từ chưa dùng
+        List<String[]> availableWords = new ArrayList<>();
+        for (String[] word : allWords) {
+            if (!usedWords.contains(word[0])) {
+                availableWords.add(word);
+            }
+        }
         
-        for (int i = 0; i < totalPairs && i < tempList.size(); i++) {
-            gameWords.add(tempList.get(i));
+        // Nếu không đủ từ mới, thông báo
+        if (availableWords.size() < totalPairs) {
+            Toast.makeText(this, "Đã hết từ mới! Bạn đã chơi hết tất cả từ vựng.", Toast.LENGTH_LONG).show();
+            // Reset để có thể chơi lại
+            usedWords.clear();
+            availableWords = new ArrayList<>(allWords);
+        }
+        
+        // Random chọn từ
+        Collections.shuffle(availableWords);
+        
+        for (int i = 0; i < totalPairs && i < availableWords.size(); i++) {
+            String[] word = availableWords.get(i);
+            gameWords.add(word);
+            usedWords.add(word[0]); // Đánh dấu từ đã dùng
         }
     }
 
@@ -534,6 +552,7 @@ public class MatchingGameActivity extends AppCompatActivity {
             
             if ("continue".equals(action)) {
                 // Chơi tiếp - cộng thêm 4 cặp vào tổng và bắt đầu vòng mới
+                // Giữ nguyên usedWords để không lặp lại từ
                 totalPairsAccumulated += totalPairs;
                 startNewGame();
             } else if ("restart".equals(action)) {
@@ -542,6 +561,7 @@ public class MatchingGameActivity extends AppCompatActivity {
                 totalMatched = 0;
                 totalPairsAccumulated = totalPairs; // Reset về 4
                 totalTimeSpent = 0;
+                usedWords.clear(); // Reset danh sách từ đã dùng
                 startNewGame();
             } else if ("finish".equals(action)) {
                 // Kết thúc - đóng activity

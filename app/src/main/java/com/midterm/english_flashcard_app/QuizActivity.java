@@ -32,6 +32,7 @@ public class QuizActivity extends AppCompatActivity {
 
     FirebaseHelper firebaseHelper;
     List<String[]> allWords = new ArrayList<>();
+    List<String> usedWords = new ArrayList<>(); // Danh sách từ đã dùng
     String[] currentWord;
     String correctAnswer;
     int score = 0;
@@ -120,10 +121,26 @@ public class QuizActivity extends AppCompatActivity {
             return;
         }
 
-        // Random 1 từ làm câu hỏi
+        // Lọc ra các từ chưa dùng
+        List<String[]> availableWords = new ArrayList<>();
+        for (String[] word : allWords) {
+            if (!usedWords.contains(word[0])) {
+                availableWords.add(word);
+            }
+        }
+        
+        // Nếu không còn từ mới, reset để chơi lại
+        if (availableWords.isEmpty() || availableWords.size() < 4) {
+            Toast.makeText(this, "Đã hết từ mới! Reset để chơi lại.", Toast.LENGTH_LONG).show();
+            usedWords.clear();
+            availableWords = new ArrayList<>(allWords);
+        }
+
+        // Random 1 từ làm câu hỏi từ danh sách chưa dùng
         Random random = new Random();
-        currentWord = allWords.get(random.nextInt(allWords.size()));
+        currentWord = availableWords.get(random.nextInt(availableWords.size()));
         correctAnswer = currentWord[0]; // word
+        usedWords.add(correctAnswer); // Đánh dấu từ đã dùng
 
         // Hiển thị hình ảnh từ assets
         String imageName = currentWord[2]; // image (ví dụ: "pink.png")
@@ -271,6 +288,9 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
+        // Reset danh sách từ đã dùng khi kết thúc
+        usedWords.clear();
+        
         // Cập nhật tiến độ
         updateProgress();
         

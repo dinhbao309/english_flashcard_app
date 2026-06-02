@@ -154,12 +154,6 @@ public class MatchingResultActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        // Chặn nút back, bắt buộc chọn Chơi tiếp hoặc Kết thúc
-        // Không làm gì
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
         // Release media player
