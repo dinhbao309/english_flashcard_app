@@ -87,7 +87,7 @@
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Số đếm" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
             </LinearLayout>
 
-            <!-- Đồ vật -->
+            <!-- Phương tiện -->
             <LinearLayout
                 android:id="@+id/cardObjects"
                 android:layout_width="0dp"
@@ -97,8 +97,8 @@
                 android:gravity="center"
                 android:background="@drawable/bg_card_pink"
                 android:layout_margin="8dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏠" android:textSize="40sp" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Đồ vật" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🚗" android:textSize="40sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Phương tiện" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
             </LinearLayout>
 
             <!-- Trái cây -->
@@ -125,7 +125,7 @@
                 android:gravity="center"
                 android:background="@drawable/bg_card_green"
                 android:layout_margin="8dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👨‍👩‍👧" android:textSize="40sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏡" android:textSize="40sp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gia đình" android:textSize="15sp" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_marginTop="8dp" />
             </LinearLayout>
 

@@ -617,6 +617,8 @@ public class MatchingGameActivity extends AppCompatActivity {
             String path = "file:///android_asset/images/" + imageName;
             Glide.with(this)
                     .load(path)
+                    .skipMemoryCache(true) // Disable memory cache
+                    .diskCacheStrategy(com.bumptech.glide.load.engine.DiskCacheStrategy.NONE) // Disable disk cache
                     .placeholder(R.drawable.bg_input)
                     .error(R.drawable.bg_input)
                     .into(imageView);

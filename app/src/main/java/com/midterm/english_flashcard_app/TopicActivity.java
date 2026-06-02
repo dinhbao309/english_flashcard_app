@@ -29,7 +29,7 @@ public class TopicActivity extends AppCompatActivity {
         cardAnimals.setOnClickListener(v -> goToFlashCard("Animals"));
         cardColors.setOnClickListener(v -> goToFlashCard("Colors"));
         cardNumbers.setOnClickListener(v -> goToFlashCard("Numbers"));
-        cardObjects.setOnClickListener(v -> goToFlashCard("Objects"));
+        cardObjects.setOnClickListener(v -> goToFlashCard("Transportation"));
         cardFruits.setOnClickListener(v -> goToFlashCard("Fruits"));
         cardFamily.setOnClickListener(v -> goToFlashCard("Family"));
     }

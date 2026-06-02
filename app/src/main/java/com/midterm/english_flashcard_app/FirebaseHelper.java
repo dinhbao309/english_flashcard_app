@@ -52,8 +52,10 @@ public class FirebaseHelper {
                         String audio   = doc.getString("audio");
                         list.add(new String[]{word, meaning, image, audio});
                     }
-                    // Random thứ tự
-                    Collections.shuffle(list);
+                    // Random thứ tự - TRỪ topic Numbers giữ nguyên thứ tự
+                    if (!category.equals("Numbers")) {
+                        Collections.shuffle(list);
+                    }
                     listener.onLoaded(list);
                 })
                 .addOnFailureListener(e ->
