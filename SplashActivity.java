@@ -18,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        // Lottie tự chạy animation, không cần code thêm
+        // Lottie tự chạy animation, không cần code thêm đoạn này
         LottieAnimationView lottieAnim = findViewById(R.id.lottieAnim);
 
         // Fade-in cho 2 dòng text
